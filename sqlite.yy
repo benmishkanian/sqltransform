@@ -1,122 +1,101 @@
+#select_stmt
 query:
-    SELECT select-stmt ;
+    with_rule select_or_value compound_order_or_limit ;
 
-select-stmt:
-    g1  g6  g25
+with_rule:
+    | WITH recursive common_table_expression CTE_cont ;
 
-g1:
-    | g2
+recursive:
+    | RECURSIVE ;
 
-g2:
-    WITH g3 g4
+CTE_cont:
+    | , common_table_expression CTE_cont ;
 
-g3:
-    | RECURSIVE
+select_or_value:
+    select_rule | values_rule ;
 
-g4:
-    common-table-expression g5
+select_rule:
+    SELECT distinct_all result_column result_column RC_cont from_rule where_rule group_by_rule ;
 
-g5:
-    | , common-table-expression g5
+distinct_all:
+    | DISTINCT | ALL ;
 
-g6:
-    g7 | g8
+RC_cont:
+    | , result_column RC_cont ;
 
-g7:
-    SELECT g9 result-column g10 g11 g16 g17
+from_rule:
+    | FROM from_clause ;
 
-g9:
-    | DISTINCT | ALL
+from_clause:
+    table_or_subquery ToS_cont | join_clause ;
 
-g10:
-    | , result-column g10
+ToS_cont:
+    | , table_or_subquery ToS_cont ;
 
-g11:
-    | g12
+where_rule:
+    | WHERE expr ;
 
-g12:
-    FROM g13
+group_by_rule:
+    | GROUP BY expr_list having_rule ;
 
-g13:
-    g14 | join-clause
+expr_list:
+	expr expr_cont ;
 
-g14:
-    table-or-subquery g15
+expr_cont:
+    | , expr expr_cont ;
 
-g15:
-    | , table-or-subquery g15
+having_rule:
+    | HAVING expr ;
 
-g16:
-    | WHERE expr
+values_rule:
+    VALUES values_list ;
 
-g17:
-    | g18
+values_list:
+    ( expr_list ) VL_cont ;
 
-g18:
-    GROUP BY expr g20 g21
+VL_cont:
+    | , values_list VL_cont ;
 
-g20:
-    | , expr g20
+compound_order_or_limit:
+    compound_operator select_or_value |
+    compound_operator select_or_value |
+	order_by_rule limit_rule ;
 
-g21:
-    | HAVING expr
+order_by_rule:
+    | ORDER BY ordering_term OT_cont ;
 
-g8:
-    VALUES g22
+OT_cont:
+    | , ordering_term OT_cont ;
 
-g22:
-    ( expr g23 ) g24
+limit_rule:
+    | LIMIT expr limit_modifier ;
 
-g23:
-    | , expr g23
+limit_modifier:
+    | OFFSET expr | , expr ;
 
-g24:
-    | , ( expr g23 ) g24
+common_table_expr:
+    table_name column_name_list AS ( select_stmt ) ;
 
-g25:
-    g26 | g27
+column_name_list:
+    | ( _field field_cont ) ;
 
-g26:
-    compound-operator g6
+field_cont:
+    | , _field field_cont ;
 
-g27:
-    g28 g30
-
-g28:
-    | ORDER BY ordering-term g29
-
-g29:
-    | , ordering-term g29
-
-g30:
-    | LIMIT expr g31
-
-g31:
-    | OFFSET expr | , expr
-
-common-table-expr:
-    table-name g32 AS ( select-stmt )
-
-g32:
-    | ( _field g33 )
-
-g33:
-    | , _field g33
-
-compound-operator:
-    UNION | UNION ALL | INTERSECT | EXCEPT
+compound_operator:
+    UNION | UNION ALL | INTERSECT | EXCEPT ;
 
 expr:
-    FAKE-EXPR
+    FAKE_EXPR ;
 
-join-clause:
-    FAKE-JOIN-CLAUSE
+join_clause:
+    FAKE_JOIN_CLAUSE ;
 
-ordering-term:
-    FAKE-ORDERING-TERM
+ordering_term:
+    FAKE_ORDERING_TERM ;
 
-result-column:
-    FAKE-RESULT-COLUMN
+result_column:
+    FAKE_RESULT_COLUMN ;
 
-table-or-subquery:
-    FAKE-TABLE-OR-SUBQUERY
+table_or_subquery:
+    FAKE_TABLE_OR_SUBQUERY ;
