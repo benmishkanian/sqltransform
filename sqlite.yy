@@ -1,6 +1,10 @@
 #select_stmt
 query:
-    with_rule select_or_value compound_order_or_limit ;
+    #with_rule 
+	select_or_value compound_order_or_limit ;
+
+subquery:
+	SELECT * FROM A ; #Prevents too many subqueries
 
 with_rule:
     | WITH recursive common_table_expression CTE_cont ;
@@ -9,13 +13,14 @@ recursive:
     | RECURSIVE ;
 
 CTE_cont:
-    | , common_table_expression CTE_cont ;
+    | | | , common_table_expression CTE_cont ;
 
 select_or_value:
-    select_rule | values_rule ;
+	#values_rule |
+	select_rule ;
 
 select_rule:
-    SELECT distinct_all result_column result_column RC_cont from_rule where_rule group_by_rule ;
+    SELECT distinct_all result_column RC_cont from_rule where_rule group_by_rule ;
 
 distinct_all:
     | DISTINCT | ALL ;
@@ -24,13 +29,19 @@ RC_cont:
     | , result_column RC_cont ;
 
 from_rule:
-    | FROM from_clause ;
+    FROM from_clause ;
 
 from_clause:
-    table_or_subquery ToS_cont | join_clause ;
+    x_table ToS_cont | join_clause ;
+
+x_table:
+	_table AS X ;
+
+table_or_subquery_list:
+	table_or_subquery ToS_cont ;
 
 ToS_cont:
-    | , table_or_subquery ToS_cont ;
+    | | | , table_or_subquery ToS_cont ;
 
 where_rule:
     | WHERE expr ;
@@ -73,11 +84,11 @@ limit_rule:
 limit_modifier:
     | OFFSET expr | , expr ;
 
-common_table_expr:
-    table_name column_name_list AS ( select_stmt ) ;
+common_table_expression:
+    _table column_name_list AS ( subquery ) ;
 
 column_name_list:
-    | ( _field field_cont ) ;
+    ( _field field_cont ) ;
 
 field_cont:
     | , _field field_cont ;
@@ -86,16 +97,63 @@ compound_operator:
     UNION | UNION ALL | INTERSECT | EXCEPT ;
 
 expr:
-    FAKE_EXPR ;
+	literal_value |
+	database_column |
+	expr binary_operator literal_value |
+	# expr null |
+	expr is_not expr;
+
+literal_value:
+	_mediumint | _char(1) | _varchar(32) | _english ;
+
+database_column:
+	# _database . _table . _field |
+	# _table . _field |
+	X . _field ;
+
+binary_operator:
+	+ | - | * | / ;
+
+null:
+	ISNULL | NOTNULL | NOT NULL ;
+
+is_not:
+	IS | IS NOT ;
 
 join_clause:
-    FAKE_JOIN_CLAUSE ;
+    x_table join_clause_cont;
+
+join_clause_cont:
+	| join_operator table_or_subquery_list join_constraint join_clause_cont ;
+
+join_operator:
+	, | join_type JOIN ;
+
+join_type:
+	LEFT | LEFT OUTER |
+	INNER |
+	CROSS |
+	;
+
+join_constraint:
+	ON expr |
+	USING ( column_name_list ) |
+	;
 
 ordering_term:
-    FAKE_ORDERING_TERM ;
+    expr asc_desc;
+
+asc_desc:
+	| ASC | DESC ;
 
 result_column:
-    FAKE_RESULT_COLUMN ;
+	* |
+	# _table . * |
+	expr as_alias ;
 
 table_or_subquery:
-    FAKE_TABLE_OR_SUBQUERY ;
+	( subquery ) as_alias |
+    _table as_alias ;
+
+as_alias:
+	| AS _varchar(10) ;
