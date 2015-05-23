@@ -44,10 +44,19 @@ ToS_cont:
     | | | , table_or_subquery ToS_cont ;
 
 where_rule:
-    | WHERE expr ;
+    | WHERE compare_expr;
+
+compare_expr:
+	database_column compare_operator literal_value compare_expr_cont ;
+
+compare_expr_cont:
+	|
+	OR compare_expr |
+	OR compare_expr |
+	OR compare_expr ;
 
 group_by_rule:
-    | GROUP BY expr_list having_rule ;
+    | GROUP BY database_column having_rule ;
 
 expr_list:
 	expr expr_cont ;
@@ -56,7 +65,7 @@ expr_cont:
     | , expr expr_cont ;
 
 having_rule:
-    | HAVING expr ;
+    | HAVING compare_expr ;
 
 values_rule:
     VALUES values_list ;
@@ -68,21 +77,18 @@ VL_cont:
     | , values_list VL_cont ;
 
 compound_order_or_limit:
-    compound_operator select_or_value |
-    compound_operator select_or_value |
+    #compound_operator select_or_value |
 	order_by_rule limit_rule ;
 
 order_by_rule:
     | ORDER BY ordering_term OT_cont ;
 
 OT_cont:
-    | , ordering_term OT_cont ;
+	;
+    #| , ordering_term OT_cont ;
 
 limit_rule:
-    | LIMIT expr limit_modifier ;
-
-limit_modifier:
-    | OFFSET expr | , expr ;
+    | LIMIT _int_unsigned;
 
 common_table_expression:
     _table column_name_list AS ( subquery ) ;
@@ -98,8 +104,8 @@ compound_operator:
 
 expr:
 	literal_value |
+	literal_value |
 	database_column |
-	expr binary_operator literal_value |
 	# expr null |
 	expr is_not expr;
 
@@ -113,6 +119,9 @@ database_column:
 
 binary_operator:
 	+ | - | * | / ;
+
+compare_operator:
+	< | > | <= | >= ;
 
 null:
 	ISNULL | NOTNULL | NOT NULL ;
@@ -137,11 +146,11 @@ join_type:
 
 join_constraint:
 	ON expr |
-	USING ( column_name_list ) |
+	USING  column_name_list |
 	;
 
 ordering_term:
-    expr asc_desc;
+    _field asc_desc;
 
 asc_desc:
 	| ASC | DESC ;
