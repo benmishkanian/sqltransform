@@ -1,0 +1,20 @@
+SELECT  X . `col_int_nokey` AS 'malukqu' , X . `col_varchar_nokey`  , * , -5697792 IS NOT X . `col_varchar_key` IS X . `pk` IS 'he' IS 'a'  , *  FROM `E` AS X   GROUP BY X . `col_varchar_nokey`  ORDER BY `col_int_nokey` ASC  ;
+
+SELECT DISTINCT * , * , X . `col_int_key`  , *  FROM `B` AS X  WHERE X . `col_int_key` < 7809792 OR X . `col_int_nokey` <= 'know' OR X . `col_int_key` < 'j' OR X . `col_int_nokey` <= -3828480 OR X . `col_int_key` <= -2381056 OR X . `col_int_key` > 'gmbhvf' OR X . `col_int_key` > 'l' OR X . `col_varchar_nokey` >= 'g' OR X . `pk` >= -1757440 OR X . `col_varchar_nokey` >= 'mbhvftlmiwrgduhd'  GROUP BY X . `col_varchar_nokey`  ORDER BY `col_varchar_nokey` ASC  LIMIT 4273471488;
+
+SELECT ALL *  FROM `C` AS X , ( SELECT * FROM A )    GROUP BY X . `col_varchar_key` HAVING X . `col_varchar_key` <= 8296704 OR X . `col_int_nokey` < 'z' OR X . `pk` <= 'are'  ORDER BY `col_varchar_key` ASC  LIMIT 1040121856;
+
+SELECT  'b'  , X . `col_varchar_key`  , *  FROM `A` AS X   GROUP BY X . `col_int_key` HAVING X . `col_varchar_key` >= 'onpksubcvcxkzkvwxijvjcemccmjpudj'  ORDER BY `pk` ASC  LIMIT 3369795584;
+
+SELECT ALL * , *  FROM `C` AS X  WHERE X . `col_varchar_nokey` >= 'p' OR X . `col_int_key` >= 'tell'    ;
+
+SELECT  *  FROM `D` AS X   GROUP BY X . `col_int_nokey`   ;
+
+SELECT DISTINCT 'c' IS X . `col_varchar_key`  , * , X . `col_varchar_key` AS 'ztoqaa'  FROM `B` AS X  WHERE X . `col_int_key` >= 'r' OR X . `pk` < 'e' OR X . `col_varchar_nokey` < 'y' OR X . `col_int_key` < "I'm" OR X . `col_varchar_key` < -2766848 OR X . `col_int_key` <= 'toqaaplhehkxbokcit' OR X . `col_varchar_nokey` <= 815104  GROUP BY X . `col_varchar_key`   ;
+
+SELECT ALL 'bdikd' IS X . `col_varchar_key` IS 'at'  , *  FROM `A` AS X   GROUP BY X . `col_varchar_key` HAVING X . `col_varchar_key` > 7679232 OR X . `col_int_key` > 6588928 OR X . `col_varchar_nokey` > 'dikdraoowgsopkhfejtuff' OR X . `col_int_key` <= 'ikdraoowgsopkhfejtufffxjpglut' OR X . `col_int_nokey` <= 'then' OR X . `col_varchar_key` > 'kdraoowgsopkhfej' OR X . `col_varchar_nokey` <= 'draoowgsopkhfejtufffxjpglutza' OR X . `col_int_nokey` > -7847168 OR X . `pk` <= 'his' OR X . `col_varchar_nokey` <= 5762048 OR X . `col_varchar_nokey` < 'raoowgsopkhfejtufffxjpg' OR X . `col_varchar_nokey` < -6502912 OR X . `col_varchar_key` > -102656 OR X . `pk` < 'aoowgsopkhfejtufffxjpglutzansit' OR X . `col_int_key` < "can't" OR X . `pk` > -3784704 OR X . `col_int_key` < 'can' OR X . `col_varchar_nokey` < 'time' OR X . `pk` >= 'yeah' OR X . `col_int_nokey` <= -3279360 OR X . `col_varchar_key` >= 'f' OR X . `col_int_nokey` <= -1244672 OR X . `col_int_nokey` > -6392064 OR X . `col_int_nokey` < 8096000  ORDER BY `pk`   ;
+
+SELECT  *  FROM `A` AS X   GROUP BY X . `col_int_nokey` HAVING X . `pk` >= 864256 OR X . `col_int_nokey` > 'a' OR X . `col_int_key` >= 'azmazkkjjwjmoyrzmw' OR X . `col_int_key` > 'q' OR X . `col_varchar_key` >= 'zmazkkjjwjmo' OR X . `col_varchar_key` >= 'on' OR X . `col_int_key` >= 'and' OR X . `pk` > "it's" OR X . `pk` < 'b'   ;
+
+SELECT DISTINCT * , 'jnyheoqxzlbzdyqsbjuzsfyhnwag'   FROM `E` AS X , ( SELECT * FROM A )   WHERE X . `col_varchar_nokey` <= 'nyheoqx' OR X . `col_varchar_key` < 'r'  GROUP BY X . `col_int_key` HAVING X . `col_int_key` >= 6425088 OR X . `col_int_nokey` >= 'then' OR X . `pk` >= 'know'   ;
+
