@@ -1,33 +1,3 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2014 by Bart Kiers
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use,
- * copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following
- * conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- *
- * Project      : sqlite-parser; an ANTLR4 grammar for SQLite
- *                https://github.com/bkiers/sqlite-parser
- * Developed by : Bart Kiers, bart@big-o.nl
- */
 grammar SQLite;
 
 parse
@@ -46,36 +16,7 @@ sql_stmt_list
  ;
 
 sql_stmt
- : ( K_EXPLAIN ( K_QUERY K_PLAN )? )? ( alter_table_stmt
-                                      | analyze_stmt
-                                      | attach_stmt
-                                      | begin_stmt
-                                      | commit_stmt
-                                      | compound_select_stmt
-                                      | create_index_stmt
-                                      | create_table_stmt
-                                      | create_trigger_stmt
-                                      | create_view_stmt
-                                      | create_virtual_table_stmt
-                                      | delete_stmt
-                                      | delete_stmt_limited
-                                      | detach_stmt
-                                      | drop_index_stmt
-                                      | drop_table_stmt
-                                      | drop_trigger_stmt
-                                      | drop_view_stmt
-                                      | factored_select_stmt
-                                      | insert_stmt
-                                      | pragma_stmt
-                                      | reindex_stmt
-                                      | release_stmt
-                                      | rollback_stmt
-                                      | savepoint_stmt
-                                      | simple_select_stmt
-                                      | select_stmt
-                                      | update_stmt
-                                      | update_stmt_limited
-                                      | vacuum_stmt )
+ : ( K_EXPLAIN ( K_QUERY K_PLAN )? )? (select_stmt)
  ;
 
 alter_table_stmt
