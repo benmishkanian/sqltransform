@@ -1,0 +1,2 @@
+SELECT ALL * , *  FROM `C` AS X  WHERE X . `col_varchar_nokey` >= 'p' OR X . `col_int_key` >= 'tell'    ;
+

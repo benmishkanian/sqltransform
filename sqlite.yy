@@ -44,7 +44,7 @@ ToS_cont:
     | | | , table_or_subquery ToS_cont ;
 
 where_rule:
-    | WHERE compare_expr;
+    WHERE compare_expr;
 
 compare_expr:
 	database_column compare_operator literal_value compare_expr_cont ;

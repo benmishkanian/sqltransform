@@ -1,4 +1,5 @@
 // Generated from SQLite.g4 by ANTLR 4.5
+package antlrsqlite;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -745,7 +746,7 @@ public class SQLiteLexer extends Lexer {
 		"\u056e\3\2\2\2\u056a\u0568\3\2\2\2\u056b\u056c\7,\2\2\u056c\u056f\7\61"+
 		"\2\2\u056d\u056f\7\2\2\3\u056e\u056b\3\2\2\2\u056e\u056d\3\2\2\2\u056f"+
 		"\u0570\3\2\2\2\u0570\u0571\b\u009c\2\2\u0571\u0138\3\2\2\2\u0572\u0573"+
-		"\t\13\2\2\u0573\u0574\3\2\2\2\u0574\u0575\b\u009d\2\2\u0575\u013a\3\2"+
+		"\t\13\2\2\u0573\u0574\3\2\2\2\u0574\u0575\b\u009d\3\2\u0575\u013a\3\2"+
 		"\2\2\u0576\u0577\13\2\2\2\u0577\u013c\3\2\2\2\u0578\u0579\t\f\2\2\u0579"+
 		"\u013e\3\2\2\2\u057a\u057b\t\r\2\2\u057b\u0140\3\2\2\2\u057c\u057d\t\16"+
 		"\2\2\u057d\u0142\3\2\2\2\u057e\u057f\t\17\2\2\u057f\u0144\3\2\2\2\u0580"+
@@ -764,7 +765,7 @@ public class SQLiteLexer extends Lexer {
 		"\u05ab\t%\2\2\u05ab\u0170\3\2\2\2\u05ac\u05ad\t&\2\2\u05ad\u0172\3\2\2"+
 		"\2\34\2\u04f1\u04f3\u04fb\u04fd\u0505\u050d\u0510\u0515\u051b\u051e\u0522"+
 		"\u0527\u0529\u052f\u0533\u0538\u053a\u053c\u0542\u0547\u054d\u054f\u055d"+
-		"\u0568\u056e\3\2\3\2";
+		"\u0568\u056e\4\2\3\2\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

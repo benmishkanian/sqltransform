@@ -1,4 +1,5 @@
 // Generated from SQLite.g4 by ANTLR 4.5
+package antlrsqlite;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -83,6 +84,18 @@ public class SQLiteBaseListener implements SQLiteListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSelect_or_values(SQLiteParser.Select_or_valuesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhere_expr(SQLiteParser.Where_exprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhere_expr(SQLiteParser.Where_exprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

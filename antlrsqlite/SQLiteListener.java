@@ -1,4 +1,5 @@
 // Generated from SQLite.g4 by ANTLR 4.5
+package antlrsqlite;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -67,6 +68,16 @@ public interface SQLiteListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSelect_or_values(SQLiteParser.Select_or_valuesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SQLiteParser#where_expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhere_expr(SQLiteParser.Where_exprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SQLiteParser#where_expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhere_expr(SQLiteParser.Where_exprContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SQLiteParser#column_def}.
 	 * @param ctx the parse tree
