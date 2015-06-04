@@ -27,7 +27,11 @@ public class Visitor extends SQLiteBaseVisitor<Integer> {
 			try {
 				InvariantFinder invFinder = new InvariantFinder("invariants.txt");
 				String outerQuery = ctx.getParent().getParent().getText();
-				System.out.println(fullText.substring(0, ctx.getParent().start.getCharPositionInLine()) + fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex()) + " AND " + invFinder.getRandomInvariant(outerQuery.charAt(outerQuery.indexOf("FROM") + 4)) + fullText.substring(ctx.getParent().stop.getStopIndex(), fullText.length()));
+				String textBefore = fullText.substring(0, ctx.getParent().start.getCharPositionInLine());
+				String originalClause = fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex());
+				String invariantPredicate = invFinder.getRandomInvariant(outerQuery.charAt(outerQuery.indexOf("FROM") + 4));
+				String textAfter = fullText.substring(ctx.getParent().stop.getStopIndex(), fullText.length());
+				System.out.println(textBefore + originalClause + " AND " + invariantPredicate + textAfter);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
