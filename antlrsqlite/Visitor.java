@@ -1,4 +1,6 @@
 package antlrsqlite;
+import java.io.IOException;
+
 import antlrsqlite.*;
 import antlrsqlite.SQLiteParser.*;
 
@@ -10,7 +12,7 @@ public class Visitor extends SQLiteBaseVisitor<Integer> {
 	public Integer visitWhere_expr(Where_exprContext ctx) {
 		int startpos = ctx.start.getCharPositionInLine();
 		//System.out.println(fullText.substring(startpos, startpos+10));
-
+		//System.out.println("In visitWhere_expr: " + ctx.getParent().getText());
 		super.visitWhere_expr(ctx);
 
 		return 0;
@@ -19,8 +21,18 @@ public class Visitor extends SQLiteBaseVisitor<Integer> {
 	@Override
 	public Integer visitExpr(ExprContext ctx) {
 
-		System.out.println(ctx.getParent().getText());
-	
+		//System.out.println("In visitExpr: " + ctx.getParent().getText());
+		String clause = ctx.getParent().getText();
+		if (clause.contains("WHERE")) {
+			try {
+				InvariantFinder invFinder = new InvariantFinder("invariants.txt");
+				String outerQuery = ctx.getParent().getParent().getText();
+				System.out.println(fullText.substring(0, ctx.getParent().start.getCharPositionInLine()) + fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex()) + " AND " + invFinder.getRandomInvariant(outerQuery.charAt(outerQuery.indexOf("FROM") + 4)) + fullText.substring(ctx.getParent().stop.getStopIndex(), fullText.length()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		super.visitExpr(ctx);
 
 		return 0;

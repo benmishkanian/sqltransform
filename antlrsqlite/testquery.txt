@@ -1,0 +1,1 @@
+SELECT bob FROM A WHERE id=45;
