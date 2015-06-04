@@ -1,0 +1,15 @@
+A.col_int_nokey <= 4
+A.pk <= 1
+A.col_int_key <= -1851648
+B.col_int_nokey <= 4312576
+B.pk <= 25
+B.col_int_key <= 7274240
+C.col_int_nokey <= 6280704
+C.pk <= 50
+C.col_int_key <= 6370304
+D.col_int_nokey <= 8183552
+D.pk <= 100
+D.col_int_key <= 8176896
+E.pk <= 200
+E.col_int_key <= 8270336
+E.col_int_nokey <= 8059392
