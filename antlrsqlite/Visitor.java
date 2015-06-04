@@ -26,7 +26,7 @@ public class Visitor extends SQLiteBaseVisitor<Integer> {
 		if (clause.contains("WHERE")) {
 			try {
 				String textBefore = fullText.substring(0, ctx.getParent().start.getCharPositionInLine());
-				String originalClause = fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex());
+				String originalClause = fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex()+1);
 				InvariantFinder invFinder = new InvariantFinder("invariants.txt");
 				String outerQuery = ctx.getParent().getParent().getText();
 				char dbTableName = outerQuery.charAt(outerQuery.indexOf("FROM") + 4);
