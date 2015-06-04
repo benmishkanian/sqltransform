@@ -25,11 +25,15 @@ public class Visitor extends SQLiteBaseVisitor<Integer> {
 		String clause = ctx.getParent().getText();
 		if (clause.contains("WHERE")) {
 			try {
-				InvariantFinder invFinder = new InvariantFinder("invariants.txt");
-				String outerQuery = ctx.getParent().getParent().getText();
 				String textBefore = fullText.substring(0, ctx.getParent().start.getCharPositionInLine());
 				String originalClause = fullText.substring(ctx.getParent().start.getCharPositionInLine(), ctx.getParent().stop.getStopIndex());
-				String invariantPredicate = invFinder.getRandomInvariant(outerQuery.charAt(outerQuery.indexOf("FROM") + 4));
+				InvariantFinder invFinder = new InvariantFinder("invariants.txt");
+				String outerQuery = ctx.getParent().getParent().getText();
+				char dbTableName = outerQuery.charAt(outerQuery.indexOf("FROM") + 4);
+				if (dbTableName == '`') {
+					dbTableName = outerQuery.charAt(outerQuery.indexOf("FROM") + 5);
+				}
+				String invariantPredicate = invFinder.getRandomInvariant(dbTableName);
 				String textAfter = fullText.substring(ctx.getParent().stop.getStopIndex(), fullText.length());
 				System.out.println(textBefore + originalClause + " AND " + invariantPredicate + textAfter);
 			} catch (IOException e) {
