@@ -1,0 +1,1 @@
+rm sqlite_mutated_logs/* sqlite_logs/* cmp/* mutated/* errors/* queries/*
