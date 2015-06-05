@@ -29,7 +29,7 @@ appendToFile("queries", seed, out[0])
 #run sqlite on original
 out = call.cmd(["sqlite3 db.sqlite < queries/" + seed])
 errorDump("error in sqlite", out[1])
-appendToFile("sqlite_logs", seed, out[0])
+appendToFile(".", "original_log", out[0])
 
 #mutate query
 queryFile = "./queries/" + seed
@@ -40,7 +40,7 @@ appendToFile("mutated", seed, out[0])
 #run sqlite on mutated
 out = call.cmd(["sqlite3 db.sqlite < mutated/" + seed])
 errorDump("error running mutated query", out[1])
-appendToFile("sqlite_mutated_logs", seed, out[0])
+appendToFile(".", "mutated_log", out[0])
 
 #compare
 out = call.cmd(["cmp sqlite_logs/" + seed + " sqlite_mutated_logs/" + seed])
