@@ -1,10 +1,17 @@
 import sqlite3
 import re
+import argparse
+import sys
 
-matcher = re.compile('"(\w+)"')
-conn = sqlite3.connect('db.sqlite')
+parser = argparse.ArgumentParser()
+parser.add_argument('dbfile', help="An SQLite database file")
+parser.add_argument('-o', '--outfile', type=argparse.FileType('w'), default=sys.stdout,
+                    help="The file to write to (defaults to stdout)", dest="outfile")
+args = parser.parse_args()
+conn = sqlite3.connect(args.dbfile)
 c = conn.cursor()
 
+matcher = re.compile('"(\w+)"')
 # Get list of tables
 c.execute("select name from sqlite_master where type = 'table';")
 # For each table...
@@ -27,7 +34,8 @@ for tableTuple in c.fetchall():
             # Output invariant
             print("{tableNameParam}.{colNameParam} <= {maxValueParam}".format(tableNameParam=tableName,
                                                                               colNameParam=colName,
-                                                                              maxValueParam=maxValue))
+                                                                              maxValueParam=maxValue),
+                  file=args.outfile)
 
 conn.commit()
 conn.close()
