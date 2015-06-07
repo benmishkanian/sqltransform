@@ -6,37 +6,39 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
+import java.nio.charset.StandardCharsets;
 
 public class InvariantFinder {
 	/**
 	 * Maps database table names to a list of invariants which reference 
 	 * columns in that table.
 	 */
-	private HashMap<Character, ArrayList<String>> invariantTable;
+	private HashMap<String, ArrayList<String>> invariantTable;
 	
 	private Random rng;
 	
 	public InvariantFinder(String invariantFilePath) throws IOException {
 		// Initialize table of invariants
-		invariantTable = new HashMap<Character, ArrayList<String>>();
+		invariantTable = new HashMap<String, ArrayList<String>>();
 		rng = new Random();
-		BufferedReader reader = Files.newBufferedReader(Paths.get(invariantFilePath));
+		BufferedReader reader = Files.newBufferedReader(Paths.get(invariantFilePath), StandardCharsets.US_ASCII);
 		String line;
 		while ((line = reader.readLine()) != null) {
-			char dbTableName = line.charAt(0);
+			String dbTableName = line.substring(0, line.indexOf('.'));
+			String clause = line.substring(line.indexOf('.'));
 			if (invariantTable.containsKey(dbTableName)) {
-				invariantTable.get(dbTableName).add(line);
+				invariantTable.get(dbTableName).add(clause);
 			}
 			else {
 				ArrayList<String> initialInvariantList = new ArrayList<String>();
-				initialInvariantList.add(line);
+				initialInvariantList.add(clause);
 				invariantTable.put(dbTableName, initialInvariantList);
 			}
 		}
 	}
 	
-	public String getRandomInvariant(Character dbTableName) {
+	public String getRandomInvariant(String dbTableName) {
 		ArrayList<String> validInvariants = invariantTable.get(dbTableName);
-		return validInvariants.get(rng.nextInt(validInvariants.size()));
+		return 'X' + validInvariants.get(rng.nextInt(validInvariants.size()));
 	}
 }
