@@ -1,2 +1,1 @@
-SELECT ALL * , *  FROM `C` AS X  WHERE X . `col_varchar_nokey` >= 'p' OR X . `col_int_key` >= 'tell'    ;
-
+SELECT DISTINCT * , 'jnyheoqxzlbzdyqsbjuzsfyhnwag'   FROM `E` AS X , ( SELECT * FROM A )   WHERE X . `col_varchar_nokey` <= 'nyheoqx' OR X . `col_varchar_key` < 'r'  GROUP BY X . `col_int_key` HAVING X . `col_int_key` >= 6425088 OR X . `col_int_nokey` >= 'then' OR X . `pk` >= 'know'   ;

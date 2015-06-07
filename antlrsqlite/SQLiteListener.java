@@ -1,5 +1,4 @@
 // Generated from SQLite.g4 by ANTLR 4.5
-package antlrsqlite;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 

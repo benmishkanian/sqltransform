@@ -1,5 +1,4 @@
 // Generated from SQLite.g4 by ANTLR 4.5
-package antlrsqlite;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
