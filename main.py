@@ -21,6 +21,9 @@ try:
 except IndexError:
 	seed = "0"
 
+#clean temporary logs
+call.cmd(["rm original_log mutated_log"])
+
 #generate a basic query
 out = call.cmd(["python gen-query.py " + seed])
 errorDump("error in query generation", out[1])
@@ -43,6 +46,6 @@ errorDump("error running mutated query", out[1])
 appendToFile(".", "mutated_log", out[0])
 
 #compare
-out = call.cmd(["cmp sqlite_logs/" + seed + " sqlite_mutated_logs/" + seed])
+out = call.cmd(["cmp original_log mutated_log"])
 errorDump("error in cmp", out[1])
 appendToFile("cmp", seed, out[0])

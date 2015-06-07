@@ -1,0 +1,3 @@
+SELECT DISTINCT X . `col_int_not_null_key`, X.col_int_not_null_nokey FROM `B` AS X  WHERE X.col_int_not_null_key <= 8171008 AND X . `col_varchar_not_null_nokey` >= 'a' GROUP BY X . `col_varchar_not_null_key` HAVING X . `col_varchar_not_null_key` <= 'y'  ORDER BY `col_int_not_null_key` DESC  ;
+
+SELECT DISTINCT X . `col_int_not_null_key`, X.col_int_not_null_nokey   FROM `B` AS X  WHERE X . `col_varchar_not_null_nokey` >= 'a' GROUP BY X . `col_varchar_not_null_key` HAVING X . `col_varchar_not_null_key` <= 'y'  ORDER BY `col_int_not_null_key` DESC  ;
